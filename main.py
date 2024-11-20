@@ -1,4 +1,3 @@
-!pip install SQLAlchemy==1.4.0
 
 import streamlit as st 
 
