@@ -1,8 +1,6 @@
-import streamlit as st
-if 'key' not in st.session_state:
-    st.session_state['key'] = []
+!pip install SQLAlchemy==1.4.0
 
-messages = []
+import streamlit as st 
 
 @st.cache_data
 def get_conn():
