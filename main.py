@@ -13,12 +13,12 @@ conn = get_conn()
 
 def save(msg):
 	with conn.session as s:
-    	s.execute('CREATE TABLE IF NOT EXISTS chat_messages(msg_ts timestamp, message TEXT);')
-    	s.execute(
+		s.execute('CREATE TABLE IF NOT EXISTS chat_messages(msg_ts timestamp, message TEXT);')
+		s.execute(
     		'INSERT INTO chat_messages (msg_ts, message) VALUES (current_timestamp, :msg);',
             params=dict(msg=msg)
     	)
-    	s.commit()
+		s.commit()
 
 def getAll():
 	sql = 'select * from chat_messages order by msg_ts desc'
