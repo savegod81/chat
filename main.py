@@ -1,15 +1,12 @@
 import streamlit as st
-
-messages = []
-
-@st.cache_data
-def save(msg):
-	messages.append(msg)
-	return messages
+message = []
+if 'key' not in st.session_state:
+    st.session_state['key'] = message
+	
 
 st.title("Our Private Chatroom")
-input = st.text_input("Your Message:")
+input = st.text_input("Your Message1:")
 
-all_msg = save(input)
+all_msg = st.session_state.key
 for msg in all_msg:
 	st.write(msg)
