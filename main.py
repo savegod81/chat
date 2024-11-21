@@ -1,7 +1,7 @@
 
 import streamlit as st 
 from sqlalchemy import text
-@st.experimental_singleton
+@st.cache
 def getConn():
 	return st.connection('messages_db', type='sql')
 conn = getConn()
