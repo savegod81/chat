@@ -1,9 +1,10 @@
 
 import streamlit as st 
 from sqlalchemy import text
-
-conn = st.connection('messages_db', type='sql')
-
+@st.experimental_singleton
+def getConn():
+	return st.connection('messages_db', type='sql')
+conn = getConn()
 CREATE_TBL = text('CREATE TABLE IF NOT EXISTS chat_messages(msg_ts timestamp, message TEXT);')
 INSERT_SQL = text('INSERT INTO chat_messages (msg_ts, message) VALUES (current_timestamp, :msg);')
 CLEAN_SQL = text('DELETE from chat_messages;')
